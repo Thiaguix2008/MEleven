@@ -10,21 +10,6 @@ function delay(secs,callback) {
 module.exports = (client) => {
     if (client != null) {
         client.on('clientReady', () => {
-
-            /////SERVER REQ-RES/////
-            const app = express()
-
-            app.get('/', (req, res) => {
-                res.send('r')
-            })
-
-            const PORT = process.env.PORT || 3000
-
-            app.listen(PORT, () => {
-                console.log(`Running on ${PORT}`)
-            })
-
-            //////////////////////////////////////////////////////////////////////////
             client.commands = new Collection
             console.log('ready.')
 
@@ -37,4 +22,17 @@ module.exports = (client) => {
         throw new Error("Client instance is undefined. Make sure client exists or isn't null.");
         return
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    const app = express()
+
+    app.get('/', (req, res) => {
+        res.send('r')
+    })
+
+    const PORT = process.env.PORT || 3000
+
+    app.listen(PORT, () => {
+        console.log(`Running on ${PORT}`)
+    })
 }
