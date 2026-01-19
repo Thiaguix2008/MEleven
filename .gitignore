@@ -1,0 +1,22 @@
+#MODULOS NODE
+node_modules/
+
+# VARIABLES
+.env
+
+#LOGS
+logs/
+*.log
+
+#TEMP
+.DS_Store
+Thumbs.db
+
+#DEPENDENCIAS
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#BUILD
+dist/
+build/
