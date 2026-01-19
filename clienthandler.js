@@ -1,5 +1,6 @@
 // MODULES & ESSENTIALS //
 const { Collection } = require('discord.js')
+const express = require('express')
 
 function delay(secs,callback) {
     setTimeout(callback,secs*1000)
@@ -9,6 +10,21 @@ function delay(secs,callback) {
 module.exports = (client) => {
     if (client != null) {
         client.on('clientReady', () => {
+
+            /////SERVER REQ-RES/////
+            const app = express()
+
+            app.get('/', (req, res) => {
+                res.send('r')
+            })
+
+            const PORT = process.env.PORT || 3000
+
+            app.listen(PORT, () => {
+                console.log(`Running on ${PORT}`)
+            })
+
+            //////////////////////////////////////////////////////////////////////////
             client.commands = new Collection
             console.log('ready.')
 
